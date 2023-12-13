@@ -19,5 +19,5 @@ app.use('/', Router);
 
 app.listen(PORT, () => {
     Connection();
-    // console.log(`Server is running successfully on PORT http://localhost:${PORT}`)
+    console.log(`Server is running successfully on PORT http://localhost:${PORT}`)
 });
