@@ -9,6 +9,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+
 const Router = require("./routes/route");
 app.use(cors());
 app.use(cookieParser());
@@ -20,4 +21,7 @@ app.use('/', Router);
 app.listen(PORT,"0.0.0.0", () => {
     Connection();
     console.log(`Server is running successfully on PORT http://localhost:${PORT}`)
+    app.get('/',(req,res)=>{
+        res.send('server live successfully');
+    })
 });
