@@ -20,16 +20,9 @@ app.use('/', Router);
 
 app.listen(PORT,"0.0.0.0", () => {
     Connection();
-<<<<<<< HEAD
+
     console.log(`Server is running successfully on PORT http://localhost:${PORT}`);
     app.get('/',(req,res)=>{
         res.send("success")
     })
-});
-=======
-    console.log(`Server is running successfully on PORT http://localhost:${PORT}`)
-    app.get('/',(req,res)=>{
-        res.send('server live successfully');
-    })
-});
->>>>>>> c1d8dfeb9459b56976ade1be4edd3b31a7217fe9
+}); 
