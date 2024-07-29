@@ -3,12 +3,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 dotenv.config();
-<<<<<<< HEAD
-const url = 'https://blogwebbackendserver.onrender.com';
-=======
-const url = 'https://blog-production-040f.up.railway.app';
->>>>>>> c1d8dfeb9459b56976ade1be4edd3b31a7217fe9
 
+const url = 'https://blogwebbackendserver.onrender.com';
 
 let gfs, gridfsBucket;
 const conn = mongoose.connection;
