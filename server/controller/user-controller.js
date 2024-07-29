@@ -16,6 +16,7 @@ const singupUser = async (request, response) => {
 
         const user = { username: request.body.username, name: request.body.name, password: hashedPassword }
         const userFound = await User.find({username:request.body.username})
+        
         if(userFound.length>0){
             console.log(userFound);
             return response.status(400).json({msg:'Username already exist'});
@@ -59,10 +60,11 @@ const loginUser = async (request, response) => {
 
 const logoutUser = async (request, response) => {
     const token = request.body.token;
-    await Token.deleteOne({ token: token });
+
+    await Token.deleteOne({token:token});
     
     response.status(204).json({ msg: 'logout successfull' });
-    console.log("done");
+    // console.log("done");
 }
 
 module.exports = {loginUser,logoutUser,singupUser};

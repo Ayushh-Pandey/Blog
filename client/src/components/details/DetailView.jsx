@@ -6,9 +6,10 @@ import { DataContext } from '../../context/DataProvider'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Comments from './comments/Comments';
+import Header from '../header/Header';
 
 const Container = styled(Box)(({theme})=>({
-  margin: '50px 100px',
+  margin: '65px 100px',
   [theme.breakpoints.down('md')]:{
     margin:0
   },
@@ -79,7 +80,10 @@ const DetailView = () => {
   }
 
   return (
+    <>
+    <Header/>
     <Container>
+      
       <Image src={post.picture || url} alt="post" />
 
       <Box style={{ float: 'right' }}>
@@ -105,6 +109,7 @@ const DetailView = () => {
       <Description>{post.description}</Description>
       <Comments post={post}/>
     </Container>
+    </>
   )
 }
 

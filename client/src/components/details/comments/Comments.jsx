@@ -3,7 +3,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { DataContext } from '../../../context/DataProvider';
 import { API } from '../../../service/api';
 import Comment from './Comment';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { getAccessToken } from '../../../utils/common-utils';
 
 const Container = styled(Box)`
     margin-top: 100px;
@@ -40,6 +41,8 @@ const Comments = ({ post }) => {
     const location = useLocation();
     const id = location.pathname.split('/')[2];
 
+    const navigate = useNavigate()
+
     useEffect(()=>{
         const getData = async()=>{
             const response = await API.getAllComments({postId:id});
@@ -60,6 +63,11 @@ const Comments = ({ post }) => {
     }
 
     const addComment = async () => {
+        const accessToken = getAccessToken();
+        if(!accessToken){
+            navigate('/login');
+            return ;
+        }
         const response = await API.newComment(comment);
         if (response.isSuccess) {
             setComment(initialValues);

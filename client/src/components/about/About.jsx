@@ -1,19 +1,21 @@
-
 import { Box, styled, Typography, Link } from '@mui/material';
 import { GitHub, Instagram, Email } from '@mui/icons-material';
 
+import AboutBackground from './AboutBackground.jpg'
+import Header from '../header/Header';
+
 const Banner = styled(Box)`
-    background-image: url(https://www.wallpapertip.com/wmimgs/23-236943_us-wallpaper-for-website.jpg);
+    background-image: url(${AboutBackground});
     width: 100%;
     height: 50vh;
-    background-position: left 0px bottom 0px;
+    background-position: center;
     background-size: cover;
 `;
 
 const Wrapper = styled(Box)`
     padding: 20px;
     & > h3, & > h5 {
-        margin-top: 50px;
+        margin-top: 35px;
     }
 `;
 
@@ -25,6 +27,7 @@ const About = () => {
 
     return (
         <Box>
+            <Header/>
             <Banner/>
             <Wrapper>
                 <Typography variant="h3">Technology Is Moving Fast</Typography>

@@ -3,7 +3,7 @@ import {Box,TextField,Button,styled, Typography} from '@mui/material';
 import { API } from '../../service/api';
 import {DataContext} from '../../context/DataProvider'
 import { useNavigate } from 'react-router-dom';
-
+import accountBanner from "./banner.avif"
 const Component = styled(Box)`
     width:400px;
     margin:auto;
@@ -11,14 +11,15 @@ const Component = styled(Box)`
 `;
 
 const Image = styled('img')({
-    width:100,
+    width:300,
     margin:'auto',
     display:'flex',
-    padding:'50px 0 0'
+    padding:'25px 0 0',
+    objectFit:'cover'
 });
 
 const Wrapper = styled(Box)`
-    padding:25px 25px;
+    padding:0 25px 25px 25px;
     display:flex;
     flex:1;
     flex-direction:column;
@@ -57,6 +58,7 @@ const Error = styled(Typography)`
     font-weight:600;
     
 `;
+
 const signupInitialval ={
     name:'',
     username:'',
@@ -68,8 +70,6 @@ const loginInitialval ={
     password: ''
 }
 const Login = ({isUserAuthenticated}) => {
-    const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
-
     const [account,toggleAccount] = useState('login');
     const [signup,setSignup] = useState(signupInitialval);
     const [error,setError] = useState(null);
@@ -117,6 +117,7 @@ const Login = ({isUserAuthenticated}) => {
     
                 setAccount({username: response.data.username , name: response.data.name});
                 isUserAuthenticated(true);
+                setLogin(loginInitialval);
                 navigate('/');
             }
             else{
@@ -131,8 +132,8 @@ const Login = ({isUserAuthenticated}) => {
   return (
 
     <Component>
-        <Box>
-            <Image src={imageURL} alt='login'/>
+        <Box >
+            <Image src={accountBanner} alt='login'/>
             {
                 account==='login'?
                     <Wrapper>
@@ -155,7 +156,7 @@ const Login = ({isUserAuthenticated}) => {
                         <LoginBUtton variant='contained' onClick={()=>toggleSignup()}>Already have an account</LoginBUtton>
                         
                     </Wrapper>
-            };
+            }
             
         </Box>
     </Component>

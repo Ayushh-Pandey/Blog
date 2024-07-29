@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
+const Token = require("../model/token");
 const Connection = async () => {
     const URL = process.env.MONGO_DB;
     try {
-        await mongoose.connect(URL, { useNewUrlParser: true })
+
+        mongoose.connect(URL)
         console.log('Database connected successfully');
     } catch (error) {
         console.log('Error while connecting to the database ', error);

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 dotenv.config();
-const url = 'http://localhost:5000';
+const url = 'https://blogwebbackendserver.onrender.com';
 
 
 let gfs, gridfsBucket;

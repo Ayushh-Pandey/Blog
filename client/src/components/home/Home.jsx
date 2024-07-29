@@ -3,10 +3,12 @@ import Banner from '../banner/Banner'
 import Categories from './Categories';
 import { Grid } from '@mui/material';
 import Posts from './post/Posts';
+import Header from '../header/Header';
 
 const Home = () => {
   return (
     <>
+      <Header/>
       <Banner/>
       <Grid container>
           <Grid item lg={2} sm={2} xs={12}>
