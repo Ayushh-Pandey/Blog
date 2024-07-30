@@ -4,6 +4,7 @@ import { AddCircle as Add } from '@mui/icons-material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { API } from '../../service/api'
 import { DataContext } from '../../context/DataProvider'
+import axios from 'axios';
 
 const Container = styled(Box)(({ theme }) => ({
     margin: '50px 100px',
@@ -74,12 +75,13 @@ const CreatePost = () => {
                 if (file) {
                     const data = new FormData();
                     data.append('file', file);
-                    data.append('name', file.name);
-    
+                    data.append("upload_preset", "blog_app");
+                    data.append("cloud_name", "dsgy1uji7");
+                    
                     //API call
-                    const response = await API.uploadFile(data);
-                    post.picture = response.data;
-                    setPost((prevPost) => ({ ...prevPost, picture: response.data }));
+                    const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dsgy1uji7/image/upload", data);
+                    post.picture = uploadRes.data.url.toString()
+                    setPost((prevPost) => ({ ...prevPost, picture: uploadRes.data.url.toString() }));
                 }
             } catch (error) {
                 setError('error uploading file')

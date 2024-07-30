@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const url = 'https://blogwebbackendserver.onrender.com';
+const url = 'https://blog-ten-hazel-45.vercel.app';
 
 let gfs, gridfsBucket;
 const conn = mongoose.connection;

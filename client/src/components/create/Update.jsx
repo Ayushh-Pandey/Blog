@@ -4,6 +4,7 @@ import { AddCircle as Add } from '@mui/icons-material';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { API } from '../../service/api'
 import { DataContext } from '../../context/DataProvider'
+import axios from 'axios';
 
 
 const Container = styled(Box)(({theme})=>({
@@ -46,7 +47,7 @@ const initialPost = {
     description: '',
     picture: '',
     username: '',
-    categories: '',
+    // categories: '',
     createdDate: new Date()
 }
 
@@ -75,16 +76,18 @@ const Update = () => {
         const getImage = async () => {
             if (file) {
                 const data = new FormData();
-                data.append("name", file.name);
+
                 data.append("file", file);
+                data.append("upload_preset", "blog_app");
+                data.append("cloud_name", "dsgy1uji7");
 
                 //API call
-                const response = await API.uploadFile(data);
-                post.picture = response.data;
+                const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dsgy1uji7/image/upload", data);
+                post.picture = uploadRes.data.url.toString()
             }
         }
         getImage();
-        post.categories = location.search?.split('=')[1] || 'All';
+        // post.categories = location.search?.split('=')[1] || 'All';
         post.username = account.username;
     }, [file])
 
