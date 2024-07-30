@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/', Router);
 
-app.listen(PORT, () => {
-    Connection();
+app.listen(PORT,"0.0.0.0", () => {
     console.log(`Server is running successfully on PORT http://localhost:${PORT}`);
 }); 
+Connection();
