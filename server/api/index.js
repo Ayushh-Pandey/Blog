@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const Connection = require("../database/db");
 
-dotenv.config();
+dotenv.config({path:'./server.env'});
 const app = express();
 const PORT = process.env.PORT || 5000;
 

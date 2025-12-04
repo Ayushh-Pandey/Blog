@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const Token = require("../model/token");
+
+require('dotenv').config({path:'./server.env'});
 const Connection = async () => {
     const URL = process.env.MONGO_DB;
     try {

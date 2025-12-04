@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodbBlogWebsite
+    restart: always
+    env_file:
+      - ./server/server.env  
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    env_file:
+      - ./server/server.env
+      
+  backend:
+    depends_on:
+      - mongodb
+    build: ./server
+    container_name: serverBlogWebsite
+    env_file:
+      - ./server/server.env
+    ports:
+      - 5000:5000
+      
+  frontend:
+    build: ./client
+    container_name: clientBlogWebsite
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:
+    
